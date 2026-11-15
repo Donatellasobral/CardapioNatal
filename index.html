@@ -1,0 +1,362 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Cardápio de Natal Donatella</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,700&family=Nunito+Sans:wght@300;400;600;700&display=swap">
+<style>
+/* Visual do menu impresso da Donatella: fundo vermelho com brilhos, estrelas douradas, laço de cetim, cartões creme com títulos vinho.
+   Layout: hero com logo + laço, abas fixas, um cartão creme por categoria, barra de pedido vinho. Visual único (vermelho), sem modo escuro. */
+:root{
+  --red:#B60C14; --red-deep:#7E0A10; --red-ink:#8E0F16; --cream:#F9E8D2; --ink:#4A1A18; --muted:#80594D;
+  --gold:#EDBD4B; --gold-ink:#6B4308; --line:rgba(126,10,16,.28);
+  --f-display:'Fraunces',Georgia,'Times New Roman',serif;
+  --f-body:'Nunito Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:#B50B13 url(img/bg.jpg) top center/100% auto no-repeat;color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.45;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 130px}
+.wrap{max-width:720px;margin:0 auto}
+h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+header.hero{position:relative;overflow:hidden;text-align:center;color:#fff;background:#A50A10 url(img/hero.jpg) center top/cover no-repeat;
+  margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));
+  padding:calc(26px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px))}
+header.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(150,6,12,.15),rgba(150,6,12,.55) 55%,rgba(150,6,12,.2));pointer-events:none}
+.hin{position:relative;z-index:2;max-width:720px;margin:0 auto}
+.star{position:absolute;z-index:1;pointer-events:none}
+.star.a{width:96px;right:-18px;top:34px;filter:blur(1.5px);transform:rotate(12deg)}
+.star.b{width:70px;left:-12px;bottom:150px;filter:blur(2px);opacity:.85}
+.logo{display:block;width:min(250px,64%);height:auto;margin:0 auto}
+.menu{margin-top:14px;font-family:var(--f-body);font-weight:300;font-size:clamp(2.2rem,11vw,3.4rem);letter-spacing:.06em;color:var(--gold);line-height:1}
+.hero h1{font-style:italic;font-weight:700;font-size:clamp(4rem,22vw,6.4rem);line-height:.82;letter-spacing:-.01em;margin-top:-6px;color:#fff;text-shadow:0 3px 14px rgba(70,0,6,.35)}
+.year{margin-top:10px;font-weight:300;letter-spacing:.7em;color:var(--gold);font-size:1.1rem;padding-left:.7em}
+.pill{display:inline-block;margin-top:14px;padding:7px 16px;border-radius:999px;background:rgba(48,20,20,.62);font-size:.82rem;font-weight:600;overflow-wrap:anywhere}
+.hero p{margin:14px auto 0;max-width:42ch;opacity:.95}
+.deadline{display:inline-block;margin-top:14px;padding:9px 18px;border-radius:12px;background:var(--gold);color:var(--gold-ink);font-weight:800;font-size:.95rem;box-shadow:0 4px 14px rgba(60,0,6,.35)}
+.contact{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;justify-content:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:999px;border:1.5px solid var(--cream);background:transparent;color:var(--cream);font-weight:700;text-decoration:none}
+.btn.wa{background:var(--cream);border-color:var(--cream);color:var(--red-ink)}
+.btn.solid{background:var(--gold);border-color:var(--gold);color:var(--gold-ink)}
+.fone{margin-top:12px;font-size:.88rem;opacity:.92}
+.fone b{user-select:all}
+.bowwrap{position:relative;z-index:2;margin:-6px -14% -54px}
+.bowwrap img{display:block;width:100%;height:auto}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--red-deep);
+  margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:9px max(16px,env(safe-area-inset-left,0px));overflow-x:auto;white-space:nowrap;scrollbar-width:none;box-shadow:0 4px 12px rgba(50,0,4,.35)}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs a{display:inline-block;padding:8px 15px;margin-right:6px;border-radius:999px;border:1px solid rgba(249,232,210,.55);color:var(--cream);text-decoration:none;font-weight:700;font-size:.92rem}
+nav.tabs a.on{background:var(--gold);border-color:var(--gold);color:var(--gold-ink)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--red-deep)}
+
+section.cat{scroll-margin-top:calc(64px + env(safe-area-inset-top,0px))}
+.card{position:relative;margin-top:28px;background:var(--cream);border-radius:26px;padding:24px 14px 8px;box-shadow:0 10px 28px rgba(60,0,6,.4)}
+.card h2{text-align:center;font-size:1.45rem;letter-spacing:.07em;text-transform:uppercase;color:var(--red-ink);padding:0 40px}
+.card .sub{text-align:center;margin-top:2px;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.rib{position:absolute;top:-30px;right:-8px;width:88px;pointer-events:none}
+.items{margin-top:14px}
+.item{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;align-items:start;padding:12px 6px;border-bottom:1px dashed var(--line);border-radius:12px}
+.item:last-child{border-bottom:0}
+.item.has{background:rgba(182,12,20,.08)}
+.item .body{min-width:0}
+.item h3{font-size:1.05rem;line-height:1.25;color:var(--ink);font-weight:600}
+.item .desc{margin:2px 0 0;color:var(--muted);font-size:.88rem}
+.thumb{width:72px;height:72px;border-radius:14px;overflow:hidden;background:rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center}
+.thumb svg{width:60px;height:60px}
+.thumb img{width:100%;height:100%;object-fit:contain;display:block}
+.rows{display:grid;gap:8px;margin-top:10px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.row .lbl{min-width:0;flex:1 1 130px}
+.row .lbl b{font-weight:700}
+.price{font-variant-numeric:tabular-nums;font-weight:800;color:var(--red-ink)}
+.price small{font-weight:600;color:var(--muted)}
+.step{display:inline-flex;align-items:center;border:1.5px solid var(--red);border-radius:999px;overflow:hidden;background:#fff}
+.step button{width:44px;height:44px;border:0;background:transparent;color:var(--red);font-size:1.4rem;font-weight:700;line-height:1}
+.step output{min-width:40px;text-align:center;font-variant-numeric:tabular-nums;font-weight:800;color:var(--ink)}
+.step.zero button.minus,.step.zero output{display:none}
+.step.zero{border-style:dashed;background:transparent}
+.step.zero button.plus{width:auto;padding:0 18px;font-size:.95rem}
+
+footer.note{margin-top:28px;padding:16px;border-radius:20px;background:var(--cream);color:var(--muted);font-size:.9rem;text-align:center}
+
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--red-deep);color:var(--cream);border-top:2px solid var(--gold);
+  padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.bar .in{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:12px;justify-content:space-between}
+.bar .sum{min-width:0;line-height:1.2}
+.bar .sum span{display:block;font-size:.8rem;opacity:.85}
+.bar .sum b{font-size:1.25rem;font-family:var(--f-display);font-variant-numeric:tabular-nums}
+.bar .btn{flex:0 0 auto}
+.bar .btn[disabled]{opacity:.5;cursor:not-allowed}
+
+.sheet{position:fixed;inset:0;z-index:30;background:rgba(40,0,4,.65);display:flex;align-items:flex-end;justify-content:center}
+.sheet[hidden]{display:none!important}
+.panel{background:var(--cream);width:100%;max-width:720px;max-height:92%;overflow:auto;border-radius:22px 22px 0 0;
+  padding:18px max(16px,env(safe-area-inset-right,0px)) calc(18px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.panel h2{font-size:1.5rem;color:var(--red-ink)}
+.panel .top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.close{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:1.3rem;color:var(--ink)}
+.lines{margin:12px 0;display:grid;gap:8px}
+.line{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.line .n{min-width:0}
+.line .n small{display:block;color:var(--muted)}
+.tot{display:flex;justify-content:space-between;font-size:1.2rem;font-family:var(--f-display);font-weight:700;margin:6px 0 2px;color:var(--red-ink)}
+.hint{color:var(--muted);font-size:.85rem;margin:2px 0 14px}
+label{display:block;font-weight:700;font-size:.9rem;margin-top:12px}
+input[type=text],select,textarea{width:100%;margin-top:6px;padding:12px;border-radius:10px;border:1.5px solid var(--line);background:#fff;color:var(--ink);font:inherit}
+textarea{min-height:76px;resize:vertical}
+.panel .btn{border-color:var(--red);color:var(--red)}
+.panel .btn.wa{background:var(--red);border-color:var(--red);color:#fff}
+.send{display:grid;gap:10px;margin-top:18px}
+.copybox{margin-top:12px;font-size:.88rem;color:var(--muted)}
+.copybox textarea{min-height:120px;font-size:.85rem}
+.toast{position:fixed;left:50%;bottom:calc(100px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--cream);padding:10px 16px;border-radius:999px;font-weight:700;z-index:40;font-size:.9rem}
+.toast[hidden]{display:none!important}
+</style>
+
+<header class="hero">
+  <img class="star a" src="img/star.png" alt="">
+  <img class="star b" src="img/star.png" alt="">
+  <div class="hin">
+    <img class="logo" src="img/logo.png" alt="Donatella Padaria e Confeitaria">
+    <div class="menu">MENU</div>
+    <h1>Natal</h1>
+    <div class="year">2026</div>
+    <span class="pill">@donatellapadariaeconfeitaria</span>
+    <p>Escolha seus pratos, entradas e sobremesas, monte o pedido e envie direto para a Donatella pelo WhatsApp ou pelo Instagram.</p>
+    <div class="deadline">Encomendas até 22 de dezembro de 2026</div>
+    <div class="contact">
+      <a class="btn wa" id="duvidaWa" href="#" target="_blank" rel="noopener">Tirar dúvidas no WhatsApp</a>
+      <a class="btn" href="https://ig.me/m/donatellapadariaeconfeitaria" target="_blank" rel="noopener">Chamar no Instagram</a>
+    </div>
+    <div class="fone">WhatsApp <b>(85) 99231-1483</b></div>
+  </div>
+  <div class="bowwrap"><img src="img/bow.png" alt=""></div>
+</header>
+
+<div class="wrap">
+  <nav class="tabs" id="tabs" aria-label="Categorias"></nav>
+  <main id="menu"></main>
+
+  <footer class="note">
+    Os valores, as quantidades e a disponibilidade são confirmados pela Donatella no atendimento. Boas festas!
+  </footer>
+</div>
+
+<div class="bar" id="bar">
+  <div class="in">
+    <div class="sum"><span id="count">Nenhum item no pedido</span><b id="total">R$ 0,00</b></div>
+    <button class="btn solid" id="open" disabled>Ver pedido</button>
+  </div>
+</div>
+
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="panel">
+    <div class="top"><h2 id="sheetTitle">Seu pedido</h2><button class="close" id="close" aria-label="Fechar">×</button></div>
+    <div class="lines" id="lines"></div>
+    <div class="tot"><span>Total estimado</span><span id="total2">R$ 0,00</span></div>
+    <p class="hint">O valor final é confirmado pela Donatella antes do pagamento.</p>
+
+    <label for="nome">Seu nome</label>
+    <input type="text" id="nome" autocomplete="name" placeholder="Como podemos te chamar?">
+    <label for="modo">Retirada ou entrega</label>
+    <select id="modo"><option>Retirada na loja</option><option>Entrega</option></select>
+    <label for="quando">Data e horário desejados</label>
+    <input type="text" id="quando" placeholder="Ex.: 24/12, pela manhã">
+    <label for="obs">Observações</label>
+    <textarea id="obs" placeholder="Endereço de entrega, alergias, detalhes do pedido"></textarea>
+
+    <div class="send">
+      <a class="btn wa" id="sendWa" href="#" target="_blank" rel="noopener">Enviar pedido pelo WhatsApp</a>
+      <button class="btn" id="sendIg">Enviar pelo Instagram (copia o pedido e abre o Direct)</button>
+    </div>
+    <div class="copybox">
+      No Instagram, cole o pedido na conversa. Se o botão não copiar, selecione o texto abaixo:
+      <textarea id="msg" readonly></textarea>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+var WA = '5585992311483';
+var IG = 'https://ig.me/m/donatellapadariaeconfeitaria';
+
+/* u: unidade de venda; ic: ilustração do prato; f: foto (arquivo publicado com a página); rib: laço no canto do cartão */
+var CATS = [
+ {id:'entradas',t:'Entradas',rib:1,items:[
+  {n:'Salgados fritos',d:'Cento',ic:'salgado',o:[{p:60}]},
+  {n:'Salgados assados',d:'Cento, do forno',ic:'salgado',o:[{p:80}]},
+  {n:'Canapés',ic:'canape',o:[{p:70,u:'50 un'}]},
+  {n:'Barquetes',ic:'canape',o:[{p:70,u:'50 un'}]},
+  {n:'Pães de leite',ic:'pao',o:[{p:40,u:'25 un'}]},
+  {n:'Caponata de berinjela',ic:'caponata',o:[{p:50,u:'500 g'}]},
+  {n:'Pão americano',d:'Peso: 1,5 kg',ic:'pao',o:[{p:120}]},
+  {n:'Quiche',d:'Escolha o recheio',ic:'quiche',o:[{l:'Queijo com pimenta',p:95},{l:'Frango',p:95}]}
+ ]},
+ {id:'pratos',t:'Pratos Natalinos',sub:'preço por prato',rib:1,items:[
+  {n:'Ave natalina',d:'Peru ou chester',ic:'ave',o:[{l:'Peru',p:250},{l:'Chester',p:250}]},
+  {n:'Tábua de frios',d:'Tamanho médio',ic:'frios',o:[{p:180}]},
+  {n:'Lombo assado ou tender',ic:'lombo',o:[{l:'Lombo assado',p:125},{l:'Tender',p:125}]},
+  {n:'Pernil',ic:'pernil',o:[{p:120}]},
+  {n:'Bacalhau cremoso',ic:'bacalhau',o:[{p:250}]},
+  {n:'Carne ao molho madeira',d:'Lagarto ao molho madeira',ic:'carne',o:[{p:130}]},
+  {n:'Estrogonofe de frango',ic:'estrogonofe',o:[{p:110}]},
+  {n:'Estrogonofe de carne',ic:'estrogonofe',o:[{p:130}]},
+  {n:'Camarão ao molho branco',ic:'camarao',o:[{p:250}]},
+  {n:'Filé mignon ao molho gorgonzola',ic:'file',o:[{p:230}]},
+  {n:'Lasanha',ic:'lasanha',o:[{p:220}]},
+  {n:'Peixe à delícia',ic:'peixe',o:[{p:140}]}
+ ]},
+ {id:'saladas',t:'Saladas',items:[
+  {n:'Salpicão',ic:'salada',o:[{p:150}]},
+  {n:'Salada tropical',ic:'salada',o:[{p:95}]}
+ ]},
+ {id:'guarnicoes',t:'Guarnições',items:[
+  {n:'Arroz branco',ic:'arroz',o:[{p:40,u:'1 kg'}]},
+  {n:'Arroz à grega',ic:'grega',o:[{p:80,u:'1 kg'}]},
+  {n:'Farofa natalina',ic:'farofa',o:[{p:70,u:'1 kg'}]}
+ ]},
+ {id:'sobremesas',t:'Sobremesas',rib:1,items:[
+  {n:'Delícia de abacaxi',ic:'abacaxi',o:[{p:110}]},
+  {n:'Pudim de leite ou chocolate',d:'Escolha o sabor e o tamanho',ic:'pudim',o:[
+    {l:'Leite, pequeno',p:55},{l:'Leite, grande',p:120},{l:'Chocolate, pequeno',p:55},{l:'Chocolate, grande',p:120}]},
+  {n:'Mousse de maracujá ou chocolate',ic:'mousse',o:[{l:'Maracujá',p:120},{l:'Chocolate',p:120}]},
+  {n:'Rabanadas',ic:'rabanada',o:[{p:50,u:'8 un'}]}
+ ]}
+];
+
+/* ilustrações originais dos pratos (64x64) */
+var PL='<ellipse cx="32" cy="52" rx="27" ry="5" fill="#E4D8C4"/>';
+var BW='<path d="M8 32h48a24 24 0 0 1-48 0z" fill="#E4D8C4"/>';
+function v(x){return '<svg viewBox="0 0 64 64" aria-hidden="true">'+x+'</svg>'}
+var IMG={
+ salgado:v('<path d="M32 8c10 8 18 20 14 32-2 8-10 14-14 14S20 48 18 40C14 28 22 16 32 8z" fill="#E0A33A"/><path d="M32 8c10 8 18 20 14 32" fill="none" stroke="#B87A1E" stroke-width="2"/><circle cx="26" cy="30" r="2" fill="#F7D27A"/><circle cx="36" cy="38" r="2" fill="#F7D27A"/><circle cx="30" cy="22" r="1.6" fill="#F7D27A"/>'),
+ canape:v('<circle cx="32" cy="38" r="20" fill="#E8C98C"/><circle cx="32" cy="36" r="15" fill="#F6E3B4"/><circle cx="26" cy="34" r="5" fill="#C8323C"/><circle cx="37" cy="32" r="4" fill="#2F7D4F"/><circle cx="33" cy="42" r="3.5" fill="#E0A33A"/>'),
+ pao:v('<rect x="6" y="22" width="52" height="26" rx="13" fill="#D9933F"/><path d="M18 25l6 7M30 23l6 9M42 25l6 7" stroke="#F3CF8E" stroke-width="3" stroke-linecap="round"/>'),
+ caponata:v(BW+'<rect x="16" y="20" width="9" height="10" rx="2" fill="#5B2A5E"/><rect x="28" y="16" width="9" height="12" rx="2" fill="#7A3B73"/><rect x="40" y="21" width="8" height="9" rx="2" fill="#5B2A5E"/><circle cx="26" cy="23" r="2.5" fill="#C8323C"/><circle cx="38" cy="20" r="2" fill="#2F7D4F"/>'),
+ quiche:v('<path d="M6 46L32 14l26 32z" fill="#E7B15A"/><path d="M13 43L32 21l19 22z" fill="#F4D77E"/><circle cx="28" cy="34" r="3" fill="#2F7D4F"/><circle cx="37" cy="38" r="2.5" fill="#C8323C"/><circle cx="32" cy="29" r="2" fill="#C8323C"/>'),
+ ave:v(PL+'<ellipse cx="32" cy="36" rx="19" ry="14" fill="#B8662E"/><ellipse cx="30" cy="33" rx="13" ry="8" fill="#D98A45"/><rect x="6" y="33" width="14" height="7" rx="3.5" fill="#B8662E" transform="rotate(-25 13 37)"/><circle cx="6" cy="43" r="3.5" fill="#F6E3B4"/><rect x="44" y="33" width="14" height="7" rx="3.5" fill="#B8662E" transform="rotate(25 51 37)"/><circle cx="58" cy="43" r="3.5" fill="#F6E3B4"/><circle cx="20" cy="28" r="2" fill="#2F7D4F"/><circle cx="44" cy="29" r="2" fill="#C8323C"/>'),
+ frios:v('<rect x="6" y="16" width="52" height="36" rx="6" fill="#B07A45"/><path d="M12 42l17-15 4 15z" fill="#F2C84B"/><circle cx="42" cy="26" r="6" fill="#C8323C"/><circle cx="51" cy="37" r="5" fill="#C8323C"/><circle cx="41" cy="43" r="3" fill="#6B2D7A"/><circle cx="47" cy="47" r="3" fill="#6B2D7A"/><circle cx="20" cy="26" r="2.5" fill="#2F7D4F"/>'),
+ lombo:v(PL+'<ellipse cx="22" cy="36" rx="12" ry="12" fill="#C98B52"/><ellipse cx="22" cy="36" rx="8" ry="8" fill="#F0C79B"/><ellipse cx="42" cy="36" rx="12" ry="12" fill="#C98B52"/><ellipse cx="42" cy="36" rx="8" ry="8" fill="#F0C79B"/><path d="M29 23l4-7 3 7z" fill="#2F7D4F"/>'),
+ pernil:v(PL+'<path d="M10 36c0-12 12-18 24-16 10 2 16 10 14 18-2 8-12 12-22 10-8-2-16-4-16-12z" fill="#C46F3C"/><path d="M18 30c6-6 16-6 22 0" stroke="#E7A56A" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="44" y="32" width="12" height="8" rx="4" fill="#F6E3B4"/><circle cx="57" cy="36" r="4" fill="#F6E3B4"/>'),
+ bacalhau:v(BW+'<path d="M10 32c4-9 40-9 44 0z" fill="#F3E2B8"/><circle cx="25" cy="25" r="2.8" fill="#2A3A1F"/><circle cx="38" cy="26" r="2.8" fill="#2A3A1F"/><path d="M30 22l4-6" stroke="#2F7D4F" stroke-width="3" stroke-linecap="round"/>'),
+ carne:v(PL+'<path d="M8 44c2-14 16-20 30-18 10 2 16 8 18 18z" fill="#7A3E22"/><path d="M14 41c4-8 14-12 24-10" stroke="#B0683F" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="46" cy="38" r="2" fill="#F6E3B4"/><circle cx="28" cy="38" r="2" fill="#F6E3B4"/>'),
+ estrogonofe:v(BW+'<path d="M10 32c4-9 40-9 44 0z" fill="#A5602F"/><circle cx="24" cy="27" r="2.2" fill="#F6E3B4"/><circle cx="34" cy="25" r="2.2" fill="#F6E3B4"/><circle cx="43" cy="28" r="2.2" fill="#F6E3B4"/><circle cx="30" cy="30" r="1.8" fill="#F6E3B4"/>'),
+ camarao:v('<path d="M14 46C8 30 20 12 38 14c10 1 16 8 14 16-3-6-8-9-14-9-11 0-18 12-12 25z" fill="#F07E6A"/><path d="M16 46l-6 8 11-2z" fill="#F07E6A"/><path d="M22 20l4 6M30 17l3 6M38 17l1 7" stroke="#C85A48" stroke-width="2" stroke-linecap="round"/><circle cx="46" cy="22" r="2" fill="#2A1418"/><path d="M50 18l8-6M50 22l9-1" stroke="#C85A48" stroke-width="1.6" stroke-linecap="round"/>'),
+ file:v(PL+'<ellipse cx="32" cy="36" rx="21" ry="14" fill="#7A3E22"/><path d="M12 38c4 8 36 8 40 0 0 8-8 12-20 12S12 46 12 38z" fill="#EDE6D0"/><circle cx="24" cy="46" r="2" fill="#5B6FA8"/><circle cx="34" cy="48" r="2" fill="#5B6FA8"/><circle cx="43" cy="45" r="2" fill="#5B6FA8"/>'),
+ lasanha:v('<rect x="8" y="22" width="48" height="28" rx="4" fill="#F5E2B0"/><rect x="8" y="29" width="48" height="5" fill="#C8323C"/><rect x="8" y="39" width="48" height="5" fill="#C8323C"/><rect x="8" y="16" width="48" height="9" rx="4" fill="#F2C84B"/><circle cx="18" cy="20" r="2" fill="#2F7D4F"/><circle cx="34" cy="19" r="2" fill="#2F7D4F"/><circle cx="46" cy="21" r="2" fill="#2F7D4F"/>'),
+ peixe:v('<path d="M6 32c10-14 30-14 40 0-10 14-30 14-40 0z" fill="#E8A87C"/><path d="M46 32l13-11v22z" fill="#D98A5A"/><circle cx="19" cy="29" r="2.5" fill="#2A1418"/><path d="M27 25c3 4 3 9 0 13" stroke="#C0714A" stroke-width="2" fill="none"/><path d="M34 24c3 5 3 11 0 16" stroke="#C0714A" stroke-width="2" fill="none"/>'),
+ salada:v(BW+'<path d="M12 32c1-11 10-15 16-11 2-8 14-8 17 2 6-2 10 4 8 9z" fill="#58A867"/><circle cx="26" cy="26" r="4" fill="#C8323C"/><circle cx="40" cy="25" r="3" fill="#F2C84B"/><circle cx="33" cy="22" r="2.5" fill="#C8323C"/>'),
+ arroz:v(BW+'<path d="M12 32c2-15 38-15 40 0z" fill="#FFFDF5"/><circle cx="24" cy="25" r="1.6" fill="#E0D8C0"/><circle cx="33" cy="22" r="1.6" fill="#E0D8C0"/><circle cx="41" cy="26" r="1.6" fill="#E0D8C0"/>'),
+ grega:v(BW+'<path d="M12 32c2-15 38-15 40 0z" fill="#FFF3C9"/><circle cx="24" cy="25" r="2.2" fill="#C8323C"/><circle cx="33" cy="21" r="2.2" fill="#2F7D4F"/><circle cx="41" cy="26" r="2.2" fill="#F2A33A"/><circle cx="29" cy="28" r="1.8" fill="#2F7D4F"/>'),
+ farofa:v(BW+'<path d="M12 32c2-15 38-15 40 0z" fill="#D9A441"/><circle cx="24" cy="26" r="1.8" fill="#A9702A"/><circle cx="33" cy="22" r="1.8" fill="#A9702A"/><circle cx="41" cy="27" r="1.8" fill="#A9702A"/><circle cx="30" cy="29" r="1.6" fill="#C8323C"/>'),
+ abacaxi:v('<rect x="8" y="24" width="48" height="26" rx="4" fill="#FFF3D1"/><rect x="8" y="32" width="48" height="6" fill="#F2C84B"/><rect x="8" y="24" width="48" height="7" rx="3.5" fill="#FFFDF5"/><path d="M24 22l4-9 4 7 4-7 4 9z" fill="#2F7D4F"/><circle cx="20" cy="28" r="2" fill="#F2C84B"/><circle cx="44" cy="28" r="2" fill="#F2C84B"/>'),
+ pudim:v(PL+'<path d="M12 48c0-18 8-28 20-28s20 10 20 28z" fill="#F2C84B"/><path d="M14 36c2-12 8-16 18-16s16 4 18 16c-4 2-5-2-8 1-3 3-5-1-8 2-3 3-5-1-8 2-3 2-6-1-9 0z" fill="#9A5320"/>'),
+ mousse:v('<path d="M14 12h36c0 16-8 28-18 28S14 28 14 12z" fill="#F7E9C2"/><path d="M16 22h32c-2 12-8 18-16 18s-14-6-16-18z" fill="#F2A33A"/><rect x="30" y="40" width="4" height="12" fill="#B8C4C8"/><rect x="20" y="52" width="24" height="3.5" rx="1.8" fill="#B8C4C8"/><circle cx="32" cy="12" r="4.5" fill="#C8323C"/>'),
+ rabanada:v('<rect x="8" y="26" width="34" height="26" rx="9" fill="#D99A3C" transform="rotate(-8 25 39)"/><rect x="22" y="18" width="34" height="26" rx="9" fill="#F0BC55" transform="rotate(7 39 31)"/><path d="M29 27h19M29 34h15" stroke="#B87A1E" stroke-width="2" stroke-linecap="round"/><circle cx="34" cy="24" r="1.2" fill="#fff"/><circle cx="46" cy="30" r="1.2" fill="#fff"/><circle cx="40" cy="38" r="1.2" fill="#fff"/>')
+};
+
+var cart = {}; /* chave -> {name,opt,price,unit,qty} */
+var $ = function(id){return document.getElementById(id)};
+function brl(v){return 'R$ '+v.toFixed(2).replace('.',',')}
+function qtxt(q,u){
+  if(!u) return 'Qtd. '+q;
+  return q+' × '+u;
+}
+function toast(t){var e=$('toast');e.textContent=t;e.hidden=false;clearTimeout(toast.h);toast.h=setTimeout(function(){e.hidden=true},2200)}
+
+function build(){
+  var tabs='',html='';
+  CATS.forEach(function(c,ci){
+    tabs+='<a href="#'+c.id+'" data-t="'+c.id+'">'+c.t+'</a>';
+    html+='<section class="cat" id="'+c.id+'"><div class="card">'+(c.rib?'<img class="rib" src="img/ribbon.png" alt="">':'')
+      +'<h2>'+c.t+'</h2>'+(c.sub?'<div class="sub">'+c.sub+'</div>':'')+'<div class="items">';
+    c.items.forEach(function(it,ii){
+      html+='<div class="item" id="i'+ci+'_'+ii+'"><div class="body"><h3>'+it.n+'</h3>'+(it.d?'<p class="desc">'+it.d+'</p>':'')+'<div class="rows">';
+      it.o.forEach(function(o,oi){
+        var k=ci+'_'+ii+'_'+oi;
+        html+='<div class="row"><div class="lbl">'+(o.l?'<b>'+o.l+'</b> ':'')+'<span class="price">'+brl(o.p)+(o.u?' <small>/ '+o.u+'</small>':'')+'</span></div>'
+          +'<div class="step zero" data-k="'+k+'"><button class="minus" aria-label="Tirar um">−</button><output>0</output><button class="plus" aria-label="Adicionar">Adicionar</button></div></div>';
+      });
+      html+='</div></div></div>';
+    });
+    html+='</div></div></section>';
+  });
+  $('tabs').innerHTML=tabs; $('menu').innerHTML=html;
+}
+function find(k){var p=k.split('_').map(Number);var it=CATS[p[0]].items[p[1]];return {it:it,o:it.o[p[2]]}}
+function change(k,dir){
+  var f=find(k),cur=cart[k]?cart[k].qty:0,nx=Math.max(0,cur+dir);
+  if(nx===0){delete cart[k]}else{cart[k]={name:f.it.n,opt:f.o.l||'',price:f.o.p,unit:f.o.u||'',qty:nx}}
+  paint();
+}
+function totals(){var t=0,n=0;Object.keys(cart).forEach(function(k){var l=cart[k];t+=l.price*l.qty;n++});return {t:t,n:n}}
+function lineTxt(l){return l.name+(l.opt?' ('+l.opt+')':'')+': '+qtxt(l.qty,l.unit)+' = '+brl(l.price*l.qty)}
+function paint(){
+  document.querySelectorAll('.step').forEach(function(s){
+    var k=s.getAttribute('data-k'),q=cart[k]?cart[k].qty:0;
+    s.classList.toggle('zero',q===0);
+    s.querySelector('output').textContent=q;
+    s.querySelector('.plus').textContent=q===0?'Adicionar':'+';
+    var item=s.closest('.item');
+    item.classList.toggle('has',!!item.querySelector('.step:not(.zero)'));
+  });
+  var T=totals(); $('total').textContent=brl(T.t); $('total2').textContent=brl(T.t);
+  $('count').textContent=T.n?T.n+(T.n>1?' itens no pedido':' item no pedido'):'Nenhum item no pedido';
+  $('open').disabled=!T.n;
+  if(!T.n&&!$('sheet').hidden){$('sheet').hidden=true}
+  lines();
+}
+function lines(){
+  var h='';Object.keys(cart).forEach(function(k){var l=cart[k];
+    h+='<div class="line"><div class="n">'+l.name+(l.opt?'<small>'+l.opt+'</small>':'')+'<small>'+qtxt(l.qty,l.unit)+'</small></div><div class="price">'+brl(l.price*l.qty)+'</div></div>'});
+  $('lines').innerHTML=h; message();
+}
+function message(){
+  var m='Olá, Donatella! Quero fazer um pedido do cardápio de Natal 2026:\n\n';
+  Object.keys(cart).forEach(function(k){m+='• '+lineTxt(cart[k])+'\n'});
+  m+='\nTotal estimado: '+brl(totals().t);
+  m+='\nNome: '+($('nome').value||'(a informar)');
+  m+='\n'+$('modo').value;
+  m+='\nData/horário: '+($('quando').value||'(a combinar)');
+  if($('obs').value) m+='\nObservações: '+$('obs').value;
+  $('msg').value=m;
+  $('sendWa').href='https://wa.me/'+WA+'?text='+encodeURIComponent(m);
+  return m;
+}
+$('duvidaWa').href='https://wa.me/'+WA+'?text='+encodeURIComponent('Olá, Donatella! Tenho uma dúvida sobre o cardápio de Natal 2026.');
+
+build(); paint();
+
+$('menu').addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;
+  var s=b.closest('.step');if(!s)return;
+  change(s.getAttribute('data-k'),b.classList.contains('minus')?-1:1);
+});
+$('open').onclick=function(){message();$('sheet').hidden=false};
+$('close').onclick=function(){$('sheet').hidden=true};
+$('sheet').addEventListener('click',function(e){if(e.target===$('sheet'))$('sheet').hidden=true});
+['nome','modo','quando','obs'].forEach(function(id){$(id).addEventListener('input',message)});
+$('sendIg').onclick=function(){
+  var m=message(),done=function(ok){toast(ok?'Pedido copiado. Cole na conversa.':'Selecione e copie o texto abaixo.');window.open(IG,'_blank')};
+  try{navigator.clipboard.writeText(m).then(function(){done(true)},function(){$('msg').select();done(false)})}
+  catch(err){$('msg').select();done(false)}
+};
+
+/* aba ativa conforme a rolagem */
+var secs=[].slice.call(document.querySelectorAll('section.cat'));
+function spy(){
+  var y=window.scrollY+140,cur=secs[0].id;
+  secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+  document.querySelectorAll('#tabs a').forEach(function(a){a.classList.toggle('on',a.getAttribute('data-t')===cur)});
+}
+window.addEventListener('scroll',spy,{passive:true});spy();
+$('tabs').addEventListener('click',function(e){
+  var a=e.target.closest('a');if(!a)return;e.preventDefault();
+  document.getElementById(a.getAttribute('data-t')).scrollIntoView({behavior:'smooth',block:'start'});
+});
+</script>
+
+</body></html>
